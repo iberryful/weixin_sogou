@@ -9,9 +9,13 @@
 
 ## 使用说明
 在[搜狗微信搜索平台](http://weixin.sogou.com)搜公众号名称，在url里获得公众号的openid
+
 `get_account_info()` 获取账号信息，可传入openid、url、cookies
+
 `parse_list()`获取文章列表，可传入openid、link
+
 `parse_essay()`获取文章内容，传入文章链接
+
 `update_cookies()`更新cookies，触发反爬虫时使用
 
 ## 示例
