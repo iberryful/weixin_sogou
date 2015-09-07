@@ -1,5 +1,11 @@
-# weixin_sogou
-###爬取微信公众号文章
+# weixin_sogou 
+
+爬取微信公众号文章
+
+服务地址: [WeiRSS](http://weirss.me/)
+
+**UPDATE**: 目前因为搜狗微信接口调整,服务处于不稳定状态...
+
 ## 依赖
 1. Python 3.4+
 2. BeautifulSoup
@@ -28,7 +34,4 @@ print(parse_list(open_id))
 #[{'link': 'http://mp.weixin.qq.com/s?__biz=MjM5NjM4OTAyMA==&mid=206650
 
 ```
-
-
-
 
