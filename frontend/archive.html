@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<!--[if IE 9 ]><html lang="en" class="ielt10 en"><![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--><html lang="en" class=" en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-dns-prefetch-control" content="on">
+{% load staticfiles %}
+  <link rel="stylesheet" href="{% static "css/main.css" %}">
+  <meta name="viewport" id="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  <title>Archive of {{ account.name }} | WeiRSS</title>
+  <meta property="description" name="description" content="WerRSS : Generate RSS for WeChat Subscriptions." data-app>
+  <meta property="og:description" name="og:description" content="WerRSS : Generate RSS for WeChat Subscriptions." data-app>
+  <meta property="og:image" name="og:image" content="" data-app>
+  <meta property="og:title" name="og:title" content="WerRSS" data-app>
+  <meta property="og:type" name="og:type" content="website" data-app>
+  <meta property="og:url" name="og:url" content="https://weirss.me" data-app>
+  <meta property="twitter:card" name="twitter:card" content="summary" data-app>
+</head>
+<body>
+<div class="container-fluid archive-page">
+    <div class="top">
+      <h3 id="name">{{ account.name }}</h3>
+      <span id="author">{{ account.account_id }}</span>
+      <div class="buttons">      
+        <p id="rss"><a href="/account/{{ account.account_id }}/feed/" target="_blank">查看RSS</a></p>
+        <p>|</p>
+        <p id="update"><a href="/update/{{ account.account_id }}/" target="_blank">更新</a> </p>
+      </div>
+    </div>
+    <div id="description">{{ account.description }}</div>
+    <div class="archive">
+      <ul class="article-list">
+        {% for archive in qs_archive %} 
+            <li class="archive-item">
+                <span class="archive-date">{{ archive.date }}</span>
+                <span class="dotline"></span>
+                <a href="{{ archive.link }}" target="_blank">{{ archive.title }}</a>
+            </li>
+        {% endfor %}
+      </ul>
+    </div>
+</div>
+</body>
+</html>

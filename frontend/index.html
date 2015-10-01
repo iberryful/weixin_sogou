@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<!--[if IE 9 ]><html lang="en" class="ielt10 en"><![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--><html lang="en" class=" en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-dns-prefetch-control" content="on">
+{% load staticfiles %}
+  <link rel="stylesheet" href="{% static "css/main.css" %}">
+  <link rel="stylesheet" href="{% static "css/circle.css" %}">
+
+  <meta name="viewport" id="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  <title>WeiRSS: Generate RSS for WeChat Subscriptions</title>
+  <meta property="description" name="description" content="WerRSS : Generate RSS for WeChat Subscriptions." data-app>
+  <meta property="og:description" name="og:description" content="WerRSS : Generate RSS for WeChat Subscriptions." data-app>
+  <meta property="og:image" name="og:image" content="" data-app>
+  <meta property="og:title" name="og:title" content="WerRSS" data-app>
+  <meta property="og:type" name="og:type" content="website" data-app>
+  <meta property="og:url" name="og:url" content="https://weirss.me" data-app>
+  <meta property="twitter:card" name="twitter:card" content="summary" data-app>
+  <meta property="twitter:site" name="twitter:site" content="@WerRSS" data-app>
+
+<body>
+
+  <div class="upper">
+    <div class="left">
+      <a class="logo" href="/">WeiRSS</a>
+      <span class="slogon">Generate RSS for WeChat Subscriptions.</span>
+    </div>
+    <div class="right formcontainer">
+      <form class="search" action="">
+        <input id="searchbox" type="text" placeholder="Input the name or openid of the subscription">
+        <input type="submit" name="searchquery" id="gosearch" value="Search" />
+        <input type="submit" name="addbyid" id="addbyid" value="Add" />
+      </form>
+    </div>
+  </div>
+  <div class="lower">
+    <div class="left hottest">
+      <h2>当前最热</h2>
+      <ul class="items">
+       {% for i in results.hottest %}
+        <li class="item">
+          <span class="access_time">{{ i.access_times }}</span>
+          <a class="name" href="{{ i.archive_url }}">{{ i.name }}</a>
+          <span class="desc">{{ i.description }}</span>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+    <div class="right latest">
+      <h2>最新添加</h2>
+      <ul class="items">
+        {% for i in results.latest %}
+        <li class="item">
+          <span class="add_time">{{ i.add_time }}</span>
+          <a class="name" href="{{ i.archive_url }}">{{ i.name }}</a>
+          <span class="desc">{{ i.description }}</span>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+  <div class="searchresults hidden">
+    <div class="wwrap">
+     <div class="wrap hidden">
+        <div class="close">x</div>
+        <div class="hottest alreadyhave">
+          <h2>已收录</h2>
+          <ul class="items alreadyhave">
+          </ul>
+          <button class="showmore hidden">加载更多</button>
+          </div>
+        <div class="latest fromsogou">
+          <h2>未收录</h2>
+          <ul class="items fromsogou">
+          </ul>
+          <button class="showmore hidden">加载更多</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+    <div class="statement">
+    Design Inspired by: <a href="http://zhihu.com" target="something">zhihu.com</a>, Created by: <a href="http://blog.berry10086.com" target="something">Berry</a> && <a href="http://taoalpha.github.io/blog/" target="something">TaoAlpha</a> | <a href="https://github.com/iberryful/weixin_sogou" target="something">Star me on Github</a>
+    </div>
+    <div class="donate">
+      <form id="paytip" action="https://shenghuo.alipay.com/send/payment/fill.htm" method="POST" target="_blank" accept-charset="GBK">
+      <input name="optEmail" type="hidden" value="panpan20081234@163.com" />
+      <input name="payAmount" type="hidden" value="" />
+      <input id="title" name="title" type="hidden" value="恩, 赏之~" />
+      <input name="memo" type="hidden" value="备注" />
+      <a id="donatelink" href="javascript:;"><input name="pay" type="button" value="Donate(alipay)" /></a>
+      </form>
+    <div id="zhifubao" class="hidden"><img src="{% static "img/donateqr.png" %}"></div>
+    </div>
+  </div>
+  <div class='uil-spin-css loading hidden' style='-webkit-transform:scale(0.6)'>
+    <div>
+      <div></div>
+    </div>
+    <div>
+      <div></div>
+    </div>
+    <div>
+      <div></div>
+    </div>
+    <div>
+      <div></div>
+    </div>
+    <div>
+      <div></div>
+    </div>
+    <div>
+      <div></div>
+    </div>
+    <div>
+      <div></div>
+    </div>
+    <div>
+      <div></div>
+    </div>
+  </div>
+  <div class="notification fail">因为内容源政策改变, 目前WeiRSS服务稳定性无法保证(半废状态). 非常感谢大家的支持, 有强需求的可以通过源码尝试自行搭建私有服务, 我们也会在空闲时间继续尝试优化WeiRSS.</div>
+  <script src="{% static "js/jquery.js" %}"></script>
+  <script src="{% static "js/search.js" %}"></script>
+</body>
+</html>
